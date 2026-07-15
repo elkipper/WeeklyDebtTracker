@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weekly Debt Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#1565c0">
+</head>
+
+<body>
+
+<header>
+    <h1>Weekly Debt Tracker</h1>
+</header>
+
+<nav class="tabs">
+
+    <button onclick="showTab('dashboard')">
+        Dashboard
+    </button>
+
+    <button onclick="showTab('dueDates')">
+        Due Dates
+    </button>
+
+    <button onclick="showTab('payments')">
+        Debt Payments
+    </button>
+
+    <button onclick="showTab('earnings')">
+        Earnings
+    </button>
+
+    <button onclick="showTab('timeline')">
+        Timeline
+    </button>
+
+</nav>
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboardTab" class="tab-content">
+
+    <section class="dashboard">
+
+       <div class="card summary">
+        <h2>Weekly Income</h2>
+        <p>$425</p>
+        <small>Gig Work + Roommate</small>
+    </div>
+
+    <div class="card summary">
+        <h2>Affirm/Klarna Reserve</h2>
+        <p>$100</p>
+    </div>
+
+    <div class="card summary">
+        <h2>Weekly Debt Budget</h2>
+        <p>$325</p>
+    </div>
+
+    
+    <div class="card summary">
+        <h2>Current Focus</h2>
+
+        <p id="payoffTarget">
+            Simple
+        </p>
+
+        <p id="payoffAmount">
+            Balance: $848
+        </p>
+    </div>
+
+    
+    <div class="card summary">
+
+        <h2>This Week</h2>
+
+        <p>Income: $425</p>
+
+        <p>Affirm/Klarna: $100</p>
+
+        <p>Available: $325</p>
+    </div>
+
+    </section>
+
+    <section>
+
+        <h2>Priority Items</h2>
+
+        <div id="priorityContainer"></div>
+
+    </section>
+
+    <section class="dashboard">
+
+        <div class="card">
+        <h2>Bonuses</h2>
+
+        <p>August Bonus: $1,200</p>
+        <p>November Bonus: $1,200</p>
+    </div>
+
+    <div class="card">
+        <h2>Cash Advance</h2>
+
+        <p>Balance: $285</p>
+        <p>Due: July 23</p>
+        <button id="cashAdvanceBtn">
+            Mark Paid
+        </button>
+
+        <p id="cashAdvanceStatus">
+            Status: Open
+        </p>
+    </div>
+    
+    <div class="card">
+        <h2>Available Money</h2>
+        <p>
+            Income:
+            $<span id="gigTotal">0</span>
+        </p>
+        <p>
+            Gas:
+            $<span id="gasDisplay">0</span>
+        </p>
+        <p>
+            Debt Available:
+            $<span id="availableMoney">0</span>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Weekly Progress</h2>
+        <p>
+            Weekly Goal:
+            $425
+        </p>
+        <p>
+            Earned:
+            $<span id="gigTotal2">0</span>
+        </p>
+    </div>
+
+    
+    <div class="card">
+
+        <h2>Current Target</h2>
+
+        <p id="currentTarget">
+            Loading...
+        </p>
+
+    </div>
+
+    <div class="card">
+        <h2>Total Debt Remaining</h2>
+        <p id="totalDebtAmount">
+            $0
+        </p>
+    </div>
+
+    </section>
+
+</div>
+
+<!-- DUE DATES -->
+
+<div id="dueDatesTab" class="tab-content">
+
+    <h2>Upcoming Due Dates</h2>
+
+    <div id="dueDates"></div>
+
+</div>
+
+<!-- PAYMENTS -->
+
+<div id="paymentsTab" class="tab-content">
+
+    <h2>Debt Accounts</h2>
+
+    <div id="debtContainer"></div>
+
+</div>
+
+<!-- EARNINGS -->
+
+<div id="earningsTab" class="tab-content">
+
+    <div class="card">
+
+        <h2>Gas Tracker</h2>
+
+        <input
+            type="number"
+            id="gasAmount"
+            placeholder="Gas Purchase">
+
+        <button id="addGas">
+            Add Gas
+        </button>
+
+        <p>
+            Total Gas:
+            $<span id="gasTotal">0</span>
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Gig Income Tracker</h2>
+
+        <input
+            type="number"
+            id="gigAmount"
+            placeholder="0.00">
+
+        <button id="addGigBtn">
+            Add Earnings
+        </button>
+
+        <p>
+            Total Earned:
+            $<span id="gigTotal">0</span>
+        </p>
+
+        <p>
+            Gas Set Aside:
+            $<span id="gasReserve">0</span>
+        </p>
+
+        <p>
+            Available:
+            $<span id="usableGigMoney">0</span>
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Available Money</h2>
+
+        <p>
+            Income:
+            $<span id="gigTotalDisplay">0</span>
+        </p>
+
+        <p>
+            Gas:
+            $<span id="gasDisplay">0</span>
+        </p>
+
+        <p>
+            Debt Available:
+            $<span id="availableMoney">0</span>
+        </p>
+
+    </div>
+
+</div>
+
+<!-- TIMELINE -->
+
+<div id="timelineTab" class="tab-content">
+
+    <h2>Debt Payoff Timeline</h2>
+
+    <div id="timelineContainer"></div>
+
+</div>
+
+
+<script src="js/debts.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+</html>
